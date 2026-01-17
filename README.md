@@ -71,6 +71,7 @@ All configuration is via environment variables:
 | `ODOO_USERNAME` | Yes* | Login username |
 | `ODOO_PASSWORD` | Yes* | Login password |
 | `ODOO_API_KEY` | Yes* | API key (alternative to username/password) |
+| `PREFERRED_LANG` | No | Prefer language (Odoo-format: en_US, hu_HU, ...) |
 
 *Either username/password OR api_key is required.
 
