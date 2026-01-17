@@ -112,8 +112,8 @@ AI uses: odoo_count(model="res.partner", domain=[["customer_rank", ">", 0]])
                             │ MCP Protocol (stdio)
                             ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│                    Butopea MCP Server                            │
-│                    (this project)                                │
+│                    Butopea MCP Server                           │
+│                    (this project)                               │
 │  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────────┐  │
 │  │ 10 Generic  │  │   Odoo      │  │   Session Management    │  │
 │  │   Tools     │  │   Client    │  │   & Error Handling      │  │
@@ -122,13 +122,13 @@ AI uses: odoo_count(model="res.partner", domain=[["customer_rank", ">", 0]])
                             │ HTTP/JSON-RPC
                             ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│                      Odoo Instance                               │
+│                      Odoo Instance                              │
 │  ┌─────────────────────────────────────────────────────────────┐│
-│  │              butopea_mcp Module                              ││
+│  │              butopea_mcp Module                             ││
 │  │  • /mcp/capabilities  - User's accessible menus/models      ││
-│  │  • /mcp/search        - Search records                       ││
-│  │  • /mcp/execute       - CRUD & method execution              ││
-│  │  • /mcp/model/schema  - Field definitions                    ││
+│  │  • /mcp/search        - Search records                      ││
+│  │  • /mcp/execute       - CRUD & method execution             ││
+│  │  • /mcp/model/schema  - Field definitions                   ││
 │  └─────────────────────────────────────────────────────────────┘│
 └─────────────────────────────────────────────────────────────────┘
 ```

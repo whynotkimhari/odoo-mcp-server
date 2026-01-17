@@ -21,12 +21,14 @@ class OdooClient:
         username: Optional[str] = None,
         password: Optional[str] = None,
         api_key: Optional[str] = None,
+        preferred_lang: str = 'en_US',
     ):
         self.url = url.rstrip('/')
         self.database = database
         self.username = username
         self.password = password
         self.api_key = api_key
+        self.preferred_lang = preferred_lang
         self.session_id: Optional[str] = None
         self.uid: Optional[int] = None
         self._cookies: dict = {}
@@ -81,6 +83,11 @@ class OdooClient:
     async def _call_with_client(self, client: httpx.AsyncClient, endpoint: str, **params) -> dict[str, Any]:
         """Call a butopea_mcp endpoint with provided client."""
         url = f'{self.url}{endpoint}'
+        
+        # Inject language context into params
+        if 'context' not in params:
+            params['context'] = {}
+        params['context']['lang'] = self.preferred_lang
         
         response = await client.post(
             url,

@@ -43,6 +43,7 @@ def get_odoo_config() -> dict[str, str]:
         'username': os.getenv('ODOO_USERNAME', ''),
         'password': os.getenv('ODOO_PASSWORD', ''),
         'api_key': os.getenv('ODOO_API_KEY', ''),
+        'preferred_lang': os.getenv('PREFERRED_LANG', 'en_US'),
     }
 
 
@@ -57,6 +58,7 @@ async def initialize_odoo():
         username=config['username'],
         password=config['password'],
         api_key=config['api_key'],
+        preferred_lang=config['preferred_lang'],
     )
     
     try:

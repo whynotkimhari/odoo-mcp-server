@@ -18,6 +18,17 @@ class MCPController(http.Controller):
     in the context of the authenticated user ("User POV").
     """
 
+    def _get_env(self):
+        """Get environment with context from request params (e.g., lang)."""
+        try:
+            params = request.get_json_data().get('params', {})
+            ctx = params.get('context', {})
+            if ctx:
+                return request.env.with_context(**ctx)
+        except Exception:
+            pass
+        return request.env
+
     # =========================================================================
     # CAPABILITIES - What can the current user access?
     # =========================================================================
@@ -114,7 +125,8 @@ class MCPController(http.Controller):
         _logger.info("MCP: Fetching schema for %s (view: %s)", model_name, view_type)
 
         try:
-            Model = request.env[model_name]
+            env = self._get_env()
+            Model = env[model_name]
             Model.check_access_rights('read', raise_exception=True)
         except Exception as e:
             return {'error': str(e), 'model': model_name}
@@ -171,7 +183,8 @@ class MCPController(http.Controller):
         _logger.info("MCP: Searching %s with domain %s", model, domain)
 
         try:
-            Model = request.env[model]
+            env = self._get_env()
+            Model = env[model]
             Model.check_access_rights('read', raise_exception=True)
         except Exception as e:
             return {'error': str(e)}
@@ -210,7 +223,8 @@ class MCPController(http.Controller):
         _logger.info("MCP: Executing %s.%s on ids %s", model, method, ids)
 
         try:
-            Model = request.env[model]
+            env = self._get_env()
+            Model = env[model]
         except Exception as e:
             return {'error': f'Model not found: {model}', 'details': str(e)}
 
