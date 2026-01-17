@@ -106,8 +106,8 @@ AI uses: odoo_count(model="res.partner", domain=[["customer_rank", ">", 0]])
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                        AI Assistant                              │
-│                 (Claude, Antigravity, etc.)                      │
+│                        AI Assistant                             │
+│                 (Claude, Antigravity, etc.)                     │
 └───────────────────────────┬─────────────────────────────────────┘
                             │ MCP Protocol (stdio)
                             ▼
