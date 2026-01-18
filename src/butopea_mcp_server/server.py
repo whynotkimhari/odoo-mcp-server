@@ -143,7 +143,7 @@ async def list_tools() -> list[Tool]:
         # ✨ Create record
         Tool(
             name="odoo_create",
-            description="Create a new record in any Odoo model. Respects field validation and permissions.",
+            description="Create a new record in any Odoo model. Respects field validation and permissions. ⚠️ USER CONFIRMATION REQUIRED: This operation modifies the database and will prompt the user for approval before executing.",
             inputSchema={
                 "type": "object",
                 "properties": {
@@ -157,7 +157,7 @@ async def list_tools() -> list[Tool]:
         # ✏️ Update record
         Tool(
             name="odoo_update",
-            description="Update an existing record. Respects field validation and permissions.",
+            description="Update an existing record. Respects field validation and permissions. ⚠️ USER CONFIRMATION REQUIRED: This operation modifies the database and will prompt the user for approval before executing.",
             inputSchema={
                 "type": "object",
                 "properties": {
@@ -172,7 +172,7 @@ async def list_tools() -> list[Tool]:
         # 🗑️ Delete record
         Tool(
             name="odoo_delete",
-            description="Delete a record. Respects model-level permissions.",
+            description="Delete a record. Respects model-level permissions. 🚨 USER CONFIRMATION REQUIRED: This is a DESTRUCTIVE operation that permanently deletes data. The user will be prompted for approval before executing.",
             inputSchema={
                 "type": "object",
                 "properties": {
@@ -200,7 +200,7 @@ async def list_tools() -> list[Tool]:
         # 🎯 Execute method
         Tool(
             name="odoo_execute",
-            description="Execute a method/button action on an Odoo model. Use for actions like 'action_confirm', 'action_cancel', etc.",
+            description="Execute a method/button action on an Odoo model. Use for actions like 'action_confirm', 'action_cancel', etc. ⚠️ USER CONFIRMATION REQUIRED: State-changing operations will prompt the user for approval before executing.",
             inputSchema={
                 "type": "object",
                 "properties": {
