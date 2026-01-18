@@ -143,7 +143,19 @@ async def list_tools() -> list[Tool]:
         # ✨ Create record
         Tool(
             name="odoo_create",
-            description="Create a new record in any Odoo model. Respects field validation and permissions. ⚠️ USER CONFIRMATION REQUIRED: This operation modifies the database and will prompt the user for approval before executing.",
+            description=(
+                "⚠️ MANDATORY USER CONFIRMATION REQUIRED ⚠️\n\n"
+                "This operation will MODIFY the database by creating a new record.\n\n"
+                "CRITICAL: You MUST ALWAYS stop and ask the user for explicit approval before executing this tool, "
+                "even if the user has already stated their intent (e.g., 'Create a new customer named John').\n\n"
+                "WORKFLOW:\n"
+                "1. STOP - Do NOT execute immediately\n"
+                "2. SHOW the user exactly what will be created (model, field values)\n"
+                "3. ASK for explicit confirmation: 'Should I proceed with creating this record?'\n"
+                "4. WAIT for user approval\n"
+                "5. ONLY THEN execute if the user confirms\n\n"
+                "This tool creates a new record in any Odoo model. Respects field validation and permissions."
+            ),
             inputSchema={
                 "type": "object",
                 "properties": {
@@ -157,7 +169,19 @@ async def list_tools() -> list[Tool]:
         # ✏️ Update record
         Tool(
             name="odoo_update",
-            description="Update an existing record. Respects field validation and permissions. ⚠️ USER CONFIRMATION REQUIRED: This operation modifies the database and will prompt the user for approval before executing.",
+            description=(
+                "⚠️ MANDATORY USER CONFIRMATION REQUIRED ⚠️\n\n"
+                "This operation will MODIFY the database by updating an existing record.\n\n"
+                "CRITICAL: You MUST ALWAYS stop and ask the user for explicit approval before executing this tool, "
+                "even if the user has already stated their intent (e.g., 'Update customer X with email Y').\n\n"
+                "WORKFLOW:\n"
+                "1. STOP - Do NOT execute immediately\n"
+                "2. SHOW the user exactly what will be updated (model, record ID, field changes)\n"
+                "3. ASK for explicit confirmation: 'Should I proceed with updating this record?'\n"
+                "4. WAIT for user approval\n"
+                "5. ONLY THEN execute if the user confirms\n\n"
+                "This tool updates an existing record. Respects field validation and permissions."
+            ),
             inputSchema={
                 "type": "object",
                 "properties": {
@@ -172,7 +196,20 @@ async def list_tools() -> list[Tool]:
         # 🗑️ Delete record
         Tool(
             name="odoo_delete",
-            description="Delete a record. Respects model-level permissions. 🚨 USER CONFIRMATION REQUIRED: This is a DESTRUCTIVE operation that permanently deletes data. The user will be prompted for approval before executing.",
+            description=(
+                "🚨 MANDATORY USER CONFIRMATION REQUIRED 🚨\n\n"
+                "This is a DESTRUCTIVE operation that PERMANENTLY DELETES data from the database.\n\n"
+                "CRITICAL: You MUST ALWAYS stop and ask the user for explicit approval before executing this tool, "
+                "even if the user has already stated their intent (e.g., 'Delete product JPFI00002').\n\n"
+                "WORKFLOW:\n"
+                "1. STOP - Do NOT execute immediately\n"
+                "2. SHOW the user exactly what will be deleted (model, record ID, record details)\n"
+                "3. WARN that this action is PERMANENT and CANNOT BE UNDONE\n"
+                "4. ASK for explicit confirmation: 'Are you absolutely sure you want to delete this record?'\n"
+                "5. WAIT for user approval\n"
+                "6. ONLY THEN execute if the user confirms\n\n"
+                "This tool permanently deletes a record. Respects field validation and permissions."
+            ),
             inputSchema={
                 "type": "object",
                 "properties": {
@@ -200,7 +237,20 @@ async def list_tools() -> list[Tool]:
         # 🎯 Execute method
         Tool(
             name="odoo_execute",
-            description="Execute a method/button action on an Odoo model. Use for actions like 'action_confirm', 'action_cancel', etc. ⚠️ USER CONFIRMATION REQUIRED: State-changing operations will prompt the user for approval before executing.",
+            description=(
+                "⚠️ MANDATORY USER CONFIRMATION REQUIRED ⚠️\n\n"
+                "This operation may MODIFY the database by executing a method/action on Odoo records.\n\n"
+                "CRITICAL: You MUST ALWAYS stop and ask the user for explicit approval before executing this tool, "
+                "even if the user has already stated their intent (e.g., 'Confirm sale order SO001').\n\n"
+                "WORKFLOW:\n"
+                "1. STOP - Do NOT execute immediately\n"
+                "2. SHOW the user exactly what will be executed (model, method name, record IDs, arguments)\n"
+                "3. EXPLAIN what this method does (if known)\n"
+                "4. ASK for explicit confirmation: 'Should I proceed with executing this method?'\n"
+                "5. WAIT for user approval\n"
+                "6. ONLY THEN execute if the user confirms\n\n"
+                "This tool executes a method/button action on an Odoo model. Respects field validation and permissions."
+            ),
             inputSchema={
                 "type": "object",
                 "properties": {
