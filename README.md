@@ -1,10 +1,10 @@
-# Butopea MCP Server for Odoo
+# Odoo MCP Server for Odoo
 
 [![MCP](https://img.shields.io/badge/MCP-Compatible-blue)](https://modelcontextprotocol.io)
 [![Python](https://img.shields.io/badge/Python-3.10+-green)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 
-An MCP (Model Context Protocol) server that enables AI assistants like Claude to interact with Odoo ERP. The AI operates with the exact same permissions and visibility as the authenticated user.
+An MCP (Model Context Protocol) server that enables AI assistants like Claude, Gemini, ... to interact with Odoo ERP. The AI operates with the exact same permissions and visibility as the authenticated user.
 
 ## ✨ Features
 
@@ -30,14 +30,15 @@ Add to your MCP config file (`mcp_config.json` or `claude_desktop_config.json`):
 ```json
 {
   "mcpServers": {
-    "butopea-odoo": {
+    "odoo-mcp-server": {
       "command": "uvx",
-      "args": ["--from", "git+https://github.com/whynotkimhari/butopea-mcp-server.git", "butopea-mcp-server"],
+      "args": ["--from", "git+https://github.com/whynotkimhari/odoo-mcp-server.git", "odoo-mcp-server"],
       "env": {
         "ODOO_URL": "https://your-odoo-instance.com",
         "ODOO_DB": "your_database",
         "ODOO_USERNAME": "your_username",
-        "ODOO_PASSWORD": "your_password"
+        "ODOO_PASSWORD": "your_password",
+        "PREFERRED_LANG": "en_US"
       }
     }
   }
@@ -50,14 +51,14 @@ That's it! No manual installation required. `uvx` handles everything.
 
 ```bash
 # Clone the repository
-git clone https://github.com/whynotkimhari/butopea-mcp-server.git
-cd butopea-mcp-server
+git clone https://github.com/whynotkimhari/odoo-mcp-server.git
+cd odoo-mcp-server
 
 # Install with uv
 uv sync
 
 # Run
-uv run butopea-mcp-server
+uv run odoo-mcp-server
 ```
 
 ## ⚙️ Configuration
@@ -166,7 +167,7 @@ AI: [Executes odoo_execute(model="sale.order", method="action_confirm", ids=[226
                             │ MCP Protocol (stdio)
                             ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│                    Butopea MCP Server                           │
+│                    Odoo MCP Server                           │
 │                    (this project)                               │
 │  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────────┐  │
 │  │ 10 Generic  │  │   Odoo      │  │   Session Management    │  │
@@ -178,7 +179,7 @@ AI: [Executes odoo_execute(model="sale.order", method="action_confirm", ids=[226
 ┌─────────────────────────────────────────────────────────────────┐
 │                      Odoo Instance                              │
 │  ┌─────────────────────────────────────────────────────────────┐│
-│  │              butopea_mcp Module                             ││
+│  │              odoo_mcp Module                             ││
 │  │  • /mcp/capabilities  - User's accessible menus/models      ││
 │  │  • /mcp/search        - Search records                      ││
 │  │  • /mcp/execute       - CRUD & method execution             ││
@@ -189,7 +190,7 @@ AI: [Executes odoo_execute(model="sale.order", method="action_confirm", ids=[226
 
 ## 📦 Odoo Module
 
-The `butopea_mcp` Odoo module must be installed on your Odoo instance. Copy it to your addons path and install via Apps menu.
+The `odoo_mcp` Odoo module must be installed on your Odoo instance. Copy it to your addons path and install via Apps menu.
 
 The module exposes secure JSON-RPC endpoints that respect user permissions.
 

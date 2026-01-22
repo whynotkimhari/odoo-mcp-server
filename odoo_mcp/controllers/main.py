@@ -1,5 +1,5 @@
 """
-Butopea MCP - Main Controller
+Odoo MCP - Main Controller
 Exposes endpoints for the MCP Server to interact with Odoo
 under the current user's session context ("Session Mirror").
 """
