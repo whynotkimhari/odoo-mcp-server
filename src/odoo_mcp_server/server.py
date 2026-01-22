@@ -1,5 +1,5 @@
 """
-Butopea MCP Server - Main Entry Point
+Odoo MCP Server - Main Entry Point
 Simplified MCP server with generic Odoo tools.
 """
 import asyncio
@@ -19,17 +19,17 @@ from .odoo_client import OdooClient
 load_dotenv()
 
 # Configure logging to file (stderr can interfere with MCP stdio protocol)
-log_file = '/tmp/butopea-mcp-server.log'
+log_file = '/tmp/odoo-mcp-server.log'
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[logging.FileHandler(log_file)]
 )
 _logger = logging.getLogger(__name__)
-_logger.info("Starting butopea-mcp-server")
+_logger.info("Starting odoo-mcp-server")
 
 # Initialize MCP server
-server = Server("butopea-odoo")
+server = Server("odoo-mcp-server")
 
 # Global Odoo client
 odoo_client: OdooClient | None = None
