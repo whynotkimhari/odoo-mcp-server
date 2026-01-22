@@ -167,7 +167,7 @@ AI: [Executes odoo_execute(model="sale.order", method="action_confirm", ids=[226
                             │ MCP Protocol (stdio)
                             ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│                    Odoo MCP Server                           │
+│                    Odoo MCP Server                              │
 │                    (this project)                               │
 │  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────────┐  │
 │  │ 10 Generic  │  │   Odoo      │  │   Session Management    │  │
@@ -179,7 +179,7 @@ AI: [Executes odoo_execute(model="sale.order", method="action_confirm", ids=[226
 ┌─────────────────────────────────────────────────────────────────┐
 │                      Odoo Instance                              │
 │  ┌─────────────────────────────────────────────────────────────┐│
-│  │              odoo_mcp Module                             ││
+│  │              odoo_mcp Module                                ││
 │  │  • /mcp/capabilities  - User's accessible menus/models      ││
 │  │  • /mcp/search        - Search records                      ││
 │  │  • /mcp/execute       - CRUD & method execution             ││
